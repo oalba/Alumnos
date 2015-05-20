@@ -37,7 +37,7 @@ echo "FIN DE LAS ASIGNATURAS<hr/>";
 
 mysql_close($dp);
 ?>
-<a href="nuevaAsignatura.php" target="">Nueva Asignatura</a><br/>
-<a href="nagusia.html">Inicio</a>
+<a href="nuevaAsignatura.php" target="_self">Nueva Asignatura</a><br/>
+<a href="hasiera.html">Inicio</a>
 </body>
 </html>

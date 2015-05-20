@@ -18,6 +18,6 @@ echo "</form>";
 };
 mysql_close($dp);
 ?>
-<a href="nagusia.html">Inicio</a>
+<a href="hasiera.html">Inicio</a>
 </body>
 </html>

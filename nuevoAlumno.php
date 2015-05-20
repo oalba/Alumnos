@@ -8,6 +8,6 @@ Nombre:<br/><input type='text' name='nombre' value=''><br/><br/>
 <input type='submit' value='Insertar alumno'/><br/>
 </form>
 
-<a href="nagusia.html">Inicio</a>
+<a href="hasiera.html">Inicio</a>
 </body>
 </html>

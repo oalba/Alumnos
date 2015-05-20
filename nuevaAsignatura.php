@@ -9,6 +9,6 @@ Horas:<br/><input type='number' name='horas' value=''><br/><br/>
 <input type='submit' value='Insertar asignatura'/><br/>
 </form>
 
-<a href="nagusia.html">Inicio</a>
+<a href="hasiera.html">Inicio</a>
 </body>
 </html>
