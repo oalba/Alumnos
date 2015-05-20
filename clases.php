@@ -37,7 +37,7 @@ while ($row = mysql_fetch_assoc($asign)) {
 };
 
 
-echo "FIN DE LAS ASIGNATURAS<hr/>";
+echo "<br/>FIN DE LAS ASIGNATURAS<hr/>";
 
 mysql_close($dp);
 ?>
