@@ -13,7 +13,7 @@ mysql_select_db("ikastola", $dp);
 $selAlum = "SELECT asistir_a_a.alu_cod FROM asistir_a_a,asignaturas where asistir_a_a.asig_cod=asignaturas.asig_cod and asignaturas.asig_cod=$asig";
 
 $alumn = mysql_query($selAlum);
-
+$i = 0;
 while ($row = mysql_fetch_assoc($alumn)) {
 	echo "<input type='checkbox' name='falta[]' value='$row[alu_cod]'>$row[alu_cod] ";
 	$selNom = "SELECT nombre FROM alumnos WHERE alu_cod=$row[alu_cod]";
@@ -21,6 +21,7 @@ while ($row = mysql_fetch_assoc($alumn)) {
 	while ($row2 = mysql_fetch_assoc($selNom)) {
 		echo " $row2[nombre]<br/>";
 	};
+	$i++;
 };
 
 
