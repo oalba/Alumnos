@@ -1,0 +1,88 @@
+create database ikastola;
+use ikastola;
+
+
+create table profesores
+(prof_cod integer unsigned primary key, 
+nombre_prof varchar(25), 
+usuario varchar(25), 
+pass varchar(25));
+
+create table asignaturas
+(asig_cod integer unsigned primary key, 
+nombre_asig varchar(25), 
+horas integer);
+
+create table impartir_p_a
+(prof_cod integer unsigned, 
+asig_cod integer unsigned, 
+primary key(prof_cod, asig_cod));
+
+create table alumnos
+(alu_cod integer unsigned auto_increment primary key, 
+nombre varchar(25));
+
+create table asistir_a_a
+(alu_cod integer unsigned, 
+asig_cod integer unsigned, 
+primary key(alu_cod, asig_cod));
+
+create table faltar_a_a
+(alu_cod integer unsigned, 
+asig_cod integer unsigned,
+fecha date, 
+primary key(alu_cod, asig_cod, fecha));
+
+
+alter table impartir_p_a
+add constraint fk_impartir
+foreign key (prof_cod)
+references profesores(prof_cod)
+on delete cascade
+on update cascade;
+
+alter table impartir_p_a
+add constraint fk_impartir2
+foreign key (asig_cod)
+references asignaturas(asig_cod)
+on delete cascade
+on update cascade;
+
+alter table asistir_a_a
+add constraint fk_asistir
+foreign key (alu_cod)
+references alumnos(alu_cod)
+on delete cascade
+on update cascade;
+
+alter table asistir_a_a
+add constraint fk_asistir2
+foreign key (asig_cod)
+references asignaturas(asig_cod)
+on delete cascade
+on update cascade;
+
+alter table faltar_a_a
+add constraint fk_faltar
+foreign key (alu_cod)
+references alumnos(alu_cod)
+on delete cascade
+on update cascade;
+
+alter table faltar_a_a
+add constraint fk_faltar2
+foreign key (asig_cod)
+references asignaturas(asig_cod)
+on delete cascade
+on update cascade;
+
+
+
+****
+alter table asignaturas modify horas integer;
+
+insert into profesores values(0001, 'zubiri', 'zubiri', 'zubiri');
+
+insert into asignaturas values(0001, 'programacion', 30);
+
+insert into impartir_p_a values(0001, 0001);
