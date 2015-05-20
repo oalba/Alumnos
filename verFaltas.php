@@ -3,23 +3,35 @@
 <title>Alumnos</title>
 </head>
 <body>
+aaaaa
 <?php
-$zenbat = 0;
+//$zenbat = 0;
+$asig_cod = $_GET['asig_cod'];
 
 $dp = mysql_connect("localhost", "root", "zubiri" );
 mysql_select_db("ikastola", $dp);
 
-$selAsig = "SELECT * FROM asignaturas";
-$asign = mysql_query($selAsig);
-/*$selAsig = "SELECT asignaturas.nombre_asig FROM asignaturas,asistir_a_a where asignaturas.asig_cod=asistir_a_a.asig_cod" ;
-$asign = mysql_query($selAsig);
-*/
+$asist = "SELECT * FROM asistir_a_a WHERE asig_cod=$asig_cod";
+$asis = mysql_query($asist);
+echo "<table><tr><td>Codigo</td><td>Nombre</td><td>Faltas</td></tr>"
+while ($row = mysql_fetch_assoc($asis)) {
+ 
 
+ $selNom = "SELECT nombre FROM alumnos WHERE alu_cod=$row[alu_cod]";
+ $nom = mysql_query($selNom);
+ $kop = "SELECT * FROM asistir_a_a WHERE asig_cod=$asig_cod AND alu_cod=$row[alu_cod]";
+ $cant = mysql_num_rows($kop);
+ echo "<tr><td>$row[alu_cod]</td><td>$nom</td><td>$cant</td></tr>";
+ /*while ($row2 = mysql_fetch_assoc($nom)) {
+ 	echo "<tr><td>$row[alu_cod]</td><td>$row2[nombre]</td>";
+ 	while ($row3 = mysql_fetch_assoc($cant)) {
+ 		echo "<td>$row3</td>";
+ 	};
+ 	echo "</tr>";
+ };*/
+ 
 
-echo "ASIGNATURAS:<hr/>";
-
-while ($row = mysql_fetch_assoc($asign)) {
- echo "<br><u>$row[nombre_asig]</u>	<a href='addAlumno.php?asig_cod=$row[asig_cod]' target='target'>Añadir alumnos</a>	-	<a href='verFaltas.php?asig_cod=$row[asig_cod]' target='target'>Ver faltas</a>	-	<a href='addFaltas.php?asig_cod=$row[asig_cod]' target='target'>Añadir faltas</a><br/>";
+ /*echo "<br><u>$row[nombre_asig]</u>	<a href='addAlumno.php?asig_cod=$row[asig_cod]' target='target'>Añadir alumnos</a>	-	<a href='addFaltas.php?asig_cod=$row[asig_cod]' target='target'>Añadir faltas</a><br/>";
 
  	//$selAlum = "SELECT alumnos.nombre, alumnos.alu_cod FROM alumnos,asistir_a_a where alumnos.alu_cod=asistir_a_a.alu_cod and (SELECT asignaturas.nombre_asig FROM asignaturas,asistir_a_a where asignaturas.asig_cod=asistir_a_a.asig_cod)='$row[nombre_asig]'";
  $selAlum = "SELECT asistir_a_a.alu_cod FROM asistir_a_a,asignaturas where asistir_a_a.asig_cod=asignaturas.asig_cod and asignaturas.nombre_asig='$row[nombre_asig]'";
@@ -33,15 +45,15 @@ while ($row = mysql_fetch_assoc($asign)) {
 		while ($row3 = mysql_fetch_assoc($selNom)) {
 			echo " $row3[nombre] <a href='delAlumno.php?asig_cod=$row[asig_cod]&alu_cod=$row2[alu_cod]' target='target'>Eliminar alumno</a><br/>";
 		};
-	};
+	};*/
+
 };
+echo "</table>";
 
-
-echo "<br/>FIN DE LAS ASIGNATURAS<hr/>";
 
 mysql_close($dp);
 ?>
-<a href="nuevaAsignatura.php" target="_self">Nueva Asignatura</a><br/>
+<a href="clases.php" target="_self">Clases</a><br/>
 <a href="hasiera.html">Inicio</a>
 </body>
 </html>
