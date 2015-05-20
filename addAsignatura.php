@@ -12,5 +12,5 @@ $sql = "INSERT INTO asistir_a_a (alu_cod, asig_cod) VALUES ($alu,$asig)";
 mysql_query($sql);
 mysql_close($dp);
 
-header("location:hasiera.html");
+header("location:clases.php");
 ?>

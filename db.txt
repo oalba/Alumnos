@@ -9,7 +9,7 @@ usuario varchar(25),
 pass varchar(25));
 
 create table asignaturas
-(asig_cod integer unsigned primary key, 
+(asig_cod integer unsigned primary key auto_increment, 
 nombre_asig varchar(25), 
 horas integer);
 

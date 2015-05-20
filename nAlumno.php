@@ -6,6 +6,6 @@ mysql_select_db("ikastola", $dp);
 $sartu="INSERT INTO alumnos (nombre) VALUES ('$nombre')";
 mysql_query($sartu);
 mysql_close($dp);
-header("location:hasiera.html");
+header("location:nuevoAlumno.php");
 
 ?>

@@ -12,5 +12,5 @@ $sql = "DELETE FROM asistir_a_a WHERE alu_cod=$alu AND asig_cod=$asig";
 mysql_query($sql);
 mysql_close($dp);
 
-header("location:hasiera.html");
+header("location:clases.php");
 ?>
