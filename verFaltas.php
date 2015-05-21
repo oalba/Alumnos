@@ -13,22 +13,23 @@ mysql_select_db("ikastola", $dp);
 
 $asist = "SELECT * FROM asistir_a_a WHERE asig_cod=$asig_cod";
 $asis = mysql_query($asist);
-echo "<table><tr><td>Codigo</td><td>Nombre</td><td>Faltas</td></tr>"
+echo "<table><tr><td>Codigo</td><td>Nombre</td><td>Faltas</td></tr>";
 while ($row = mysql_fetch_assoc($asis)) {
- 
+	//echo "<tr><td>$row[alu_cod]</td><td></td><td>$row[fecha]</td></tr>";
 
  $selNom = "SELECT nombre FROM alumnos WHERE alu_cod=$row[alu_cod]";
  $nom = mysql_query($selNom);
  $kop = "SELECT * FROM asistir_a_a WHERE asig_cod=$asig_cod AND alu_cod=$row[alu_cod]";
- $cant = mysql_num_rows($kop);
- echo "<tr><td>$row[alu_cod]</td><td>$nom</td><td>$cant</td></tr>";
- /*while ($row2 = mysql_fetch_assoc($nom)) {
- 	echo "<tr><td>$row[alu_cod]</td><td>$row2[nombre]</td>";
- 	while ($row3 = mysql_fetch_assoc($cant)) {
- 		echo "<td>$row3</td>";
- 	};
+ $kop1 = mysql_query($kop);
+ $cant = mysql_num_rows($kop1);
+ //echo "<tr><td>$row[alu_cod]</td><td>$nom</td><td>$cant</td></tr>";
+ while ($row2 = mysql_fetch_assoc($nom)) {
+ 	echo "<tr><td>$row[alu_cod]</td><td>$row2[nombre]</td><td>$cant</td>";
+ 	//while ($row3 = mysql_fetch_assoc($kop1)) {
+ 		//echo "<td>$row3</td>";
+ 	//};
  	echo "</tr>";
- };*/
+ };
  
 
  /*echo "<br><u>$row[nombre_asig]</u>	<a href='addAlumno.php?asig_cod=$row[asig_cod]' target='target'>Añadir alumnos</a>	-	<a href='addFaltas.php?asig_cod=$row[asig_cod]' target='target'>Añadir faltas</a><br/>";
