@@ -19,15 +19,15 @@ while ($row = mysql_fetch_assoc($asis)) {
 
  $selNom = "SELECT nombre FROM alumnos WHERE alu_cod=$row[alu_cod]";
  $nom = mysql_query($selNom);
- $kop = "SELECT * FROM asistir_a_a WHERE asig_cod=$asig_cod AND alu_cod=$row[alu_cod]";
+ $kop = "SELECT count(*) as total FROM asistir_a_a WHERE asig_cod=$asig_cod AND alu_cod=$row[alu_cod]";
  $kop1 = mysql_query($kop);
- $cant = mysql_num_rows($kop1);
+ //$cant = mysql_num_rows($kop1);
  //echo "<tr><td>$row[alu_cod]</td><td>$nom</td><td>$cant</td></tr>";
  while ($row2 = mysql_fetch_assoc($nom)) {
- 	echo "<tr><td>$row[alu_cod]</td><td>$row2[nombre]</td><td>$cant</td>";
- 	//while ($row3 = mysql_fetch_assoc($kop1)) {
- 		//echo "<td>$row3</td>";
- 	//};
+ 	echo "<tr><td>$row[alu_cod]</td><td>$row2[nombre]</td>";
+ 	while ($row3 = mysql_fetch_assoc($kop1)) {
+ 		echo "<td>".$row3[total]."</td>";
+ 	};
  	echo "</tr>";
  };
  
