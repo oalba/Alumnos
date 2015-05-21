@@ -3,7 +3,6 @@
 <title>Alumnos</title>
 </head>
 <body>
-aaaaa
 <?php
 //$zenbat = 0;
 $asig_cod = $_GET['asig_cod'];
@@ -19,14 +18,16 @@ while ($row = mysql_fetch_assoc($asis)) {
 
  $selNom = "SELECT nombre FROM alumnos WHERE alu_cod=$row[alu_cod]";
  $nom = mysql_query($selNom);
- $kop = "SELECT count(*) as total FROM asistir_a_a WHERE asig_cod=$asig_cod AND alu_cod=$row[alu_cod]";
- $kop1 = mysql_query($kop);
+ 
  //$cant = mysql_num_rows($kop1);
  //echo "<tr><td>$row[alu_cod]</td><td>$nom</td><td>$cant</td></tr>";
  while ($row2 = mysql_fetch_assoc($nom)) {
  	echo "<tr><td>$row[alu_cod]</td><td>$row2[nombre]</td>";
- 	while ($row3 = mysql_fetch_assoc($kop1)) {
- 		echo "<td>".$row3[total]."</td>";
+ 	//$kop = "SELECT count(*) FROM asistir_a_a WHERE asig_cod=$asig_cod AND alu_cod=$row[alu_cod]";
+ 	$kop = "SELECT count(*) FROM asistir_a_a WHERE alu_cod=$row[alu_cod]";
+ 	$kop1 = mysql_query($kop);
+ 	while ($row3 = mysql_fetch_array($kop1)) {
+ 		echo "<td>".$row3['count(*)']."</td>";
  	};
  	echo "</tr>";
  };
