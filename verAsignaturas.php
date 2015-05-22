@@ -1,6 +1,7 @@
 <html>
 <head>
-<title>Alumnos</title>
+	<title>Alumnos</title>
+	<link rel="stylesheet" type="text/css" href="css/gorputzak.css" />
 </head>
 <body>
 <?php
@@ -14,13 +15,15 @@ $asig2 = mysql_query($sql2);
 while ($row2 = mysql_fetch_assoc($asig2)) {
  $zenbat = $zenbat+1;
 };
-echo "ASIGNATURAS: (En total: $zenbat asignaturas)<hr/>";
+echo "<h4>ASIGNATURAS	- $zenbat asignaturas -</h4><hr/>";
 
 
 $sql = "SELECT * FROM asignaturas" ;
 $asig = mysql_query($sql);
 
 echo "<table>";
+echo "<tr><th>Codigo Asignatura</th><th>Nombre Asignatura</th><th>Cantidad Horas</th><tr/>";
+
 while ($row = mysql_fetch_assoc($asig)) {
  echo "<tr><td>$row[asig_cod]</td><td>$row[nombre_asig]</td><td>$row[horas]</td><td>";
  echo "<a href='eliminarAsignaturas.php?asig_cod=$row[asig_cod]'>Eliminar</a> <a href='modificarAsignaturas.php?asig_cod=$row[asig_cod]'>Editar</a></td></tr>";
@@ -28,7 +31,7 @@ while ($row = mysql_fetch_assoc($asig)) {
 echo "</table>";
 
 
-echo "FIN DE LAS ASIGNATURAS<hr/>";
+echo "<hr/><h4>FIN DE LAS ASIGNATURAS</h4>";
 
 //echo "<h2>MENÚ DE OPCIONES:</h2>";
 //echo "<a href='mezu_berria.php'>Insertar mensaje (Solo usuarios y administradores)</a><hr/>";
