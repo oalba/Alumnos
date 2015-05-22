@@ -21,7 +21,7 @@ while ($row = mysql_fetch_assoc($asis)) {
  while ($row2 = mysql_fetch_assoc($nom)) {
  	echo "<tr><td>$row[alu_cod]</td><td>$row2[nombre]</td>";
  	//$kop = "SELECT count(*) FROM asistir_a_a WHERE asig_cod=$asig_cod AND alu_cod=$row[alu_cod]";
- 	$kop = "SELECT count(*) as falta FROM asistir_a_a WHERE alu_cod=$row[alu_cod]";
+ 	$kop = "SELECT count(*) as falta FROM faltar_a_a WHERE alu_cod=$row[alu_cod] AND asig_cod=$asig_cod";
  	$kop1 = mysql_query($kop);
  	while ($row3 = mysql_fetch_assoc($kop1)) {
  		echo "<td>".$row3['falta']."</td>";
