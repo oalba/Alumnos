@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Alumnos</title>
+	<link rel="stylesheet" type="text/css" href="css/gorputzak.css" />
 </head>
 <body>
 <?php

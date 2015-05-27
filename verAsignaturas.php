@@ -31,7 +31,7 @@ while ($row = mysql_fetch_assoc($asig)) {
 echo "</table>";
 
 
-echo "<hr/><h4>FIN DE LAS ASIGNATURAS</h4>";
+echo "<h4>FIN DE LAS ASIGNATURAS</h4><hr/>";
 
 //echo "<h2>MENÚ DE OPCIONES:</h2>";
 //echo "<a href='mezu_berria.php'>Insertar mensaje (Solo usuarios y administradores)</a><hr/>";
@@ -40,7 +40,7 @@ echo "<hr/><h4>FIN DE LAS ASIGNATURAS</h4>";
 
 mysql_close($dp);
 ?>
-<a href="nuevaAsignatura.php" target="_self">Nueva Asignatura</a><br/>
-<a href="hasiera.html">Inicio</a>
+<a href="nuevaAsignatura.php" target="_self" id="a1">Nueva Asignatura</a>
+<a href="hasiera.html" id="a2">Inicio</a>
 </body>
 </html>

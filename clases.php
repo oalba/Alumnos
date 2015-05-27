@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Alumnos</title>
+	<link rel="stylesheet" type="text/css" href="./css/gorputzak.css" />
 </head>
 <body>
 <?php
@@ -16,10 +17,10 @@ $asign = mysql_query($selAsig);
 */
 
 
-echo "ASIGNATURAS:<hr/>";
+echo "<h4>ASIGNATURAS:</h4><hr/>";
 
 while ($row = mysql_fetch_assoc($asign)) {
- echo "<br><u>$row[nombre_asig]</u>	<a href='addAlumno.php?asig_cod=$row[asig_cod]' target='target'>Añadir alumnos</a>	-	<a href='verFaltas.php?asig_cod=$row[asig_cod]' target='target'>Ver faltas</a>	-	<a href='addFaltas.php?asig_cod=$row[asig_cod]' target='target'>Añadir faltas</a><br/>";
+ echo "<br><ul>$row[nombre_asig]	<a href='addAlumno.php?asig_cod=$row[asig_cod]' target='target'>Añadir alumnos</a>	-	<a href='verFaltas.php?asig_cod=$row[asig_cod]' target='target'>Ver faltas</a>	-	<a href='addFaltas.php?asig_cod=$row[asig_cod]' target='target'>Añadir faltas</a><br/>";
 
  	//$selAlum = "SELECT alumnos.nombre, alumnos.alu_cod FROM alumnos,asistir_a_a where alumnos.alu_cod=asistir_a_a.alu_cod and (SELECT asignaturas.nombre_asig FROM asignaturas,asistir_a_a where asignaturas.asig_cod=asistir_a_a.asig_cod)='$row[nombre_asig]'";
  $selAlum = "SELECT asistir_a_a.alu_cod FROM asistir_a_a,asignaturas where asistir_a_a.asig_cod=asignaturas.asig_cod and asignaturas.nombre_asig='$row[nombre_asig]'";
@@ -27,21 +28,21 @@ while ($row = mysql_fetch_assoc($asign)) {
 	$alumn = mysql_query($selAlum);
 
  	while ($row2 = mysql_fetch_assoc($alumn)) {
-		echo "$row2[alu_cod] ";
+		echo "<li>$row2[alu_cod] ";
 		$selNom = "SELECT nombre FROM alumnos WHERE alu_cod=$row2[alu_cod]";
 		$selNom = mysql_query($selNom);
 		while ($row3 = mysql_fetch_assoc($selNom)) {
-			echo " $row3[nombre] <a href='delAlumno.php?asig_cod=$row[asig_cod]&alu_cod=$row2[alu_cod]' target='target'>Eliminar alumno</a><br/>";
+			echo " $row3[nombre] <a href='delAlumno.php?asig_cod=$row[asig_cod]&alu_cod=$row2[alu_cod]' target='target'>Eliminar alumno</a></li></ul>";
 		};
 	};
 };
 
 
-echo "<br/>FIN DE LAS ASIGNATURAS<hr/>";
+echo "<h4>FIN DE LAS ASIGNATURAS</h4><hr/>";
 
 mysql_close($dp);
 ?>
-<a href="nuevaAsignatura.php" target="_self">Nueva Asignatura</a><br/>
-<a href="hasiera.html">Inicio</a>
+<a href="nuevaAsignatura.php" id="a1" target="_self">Nueva Asignatura</a>
+<a href="hasiera.html"  id="a2">Inicio</a>
 </body>
 </html>

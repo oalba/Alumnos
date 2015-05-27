@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Faltas</title>
+	<link rel="stylesheet" type="text/css" href="css/gorputzak.css" />
 </head>
 <body>
 <form method="POST" action="inFaltas.php">
